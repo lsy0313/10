@@ -3,17 +3,17 @@
 
 int main(int argc, char *argv[])
 {
-  FILE*fp;
-  char str[100];
-  int i;
+  FILE*fp = NULL;
+  char c;
   
-  fp = fopen("sample.txt", "w");
+  fp = fopen("sample.txt", "r");
   
-  for (i = 0; i < 3; i++) {
-  printf("input a word: ");
-  scanf("%s", str);
-  fprintf(fp, "%s\n", str);
-}
+  if (fp == NULL) {
+         printf("파일을 못 열음\n");
+         return 0;
+         }
+  
+  while( (c = fgetc(fp)) != EOF) putchar(c);
   fclose(fp);
 
   system("PAUSE");	
